@@ -1,61 +1,100 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chat App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ChatApp</title>
         <link rel="icon" href="./img/favicon.png">
         <link rel="stylesheet" href="./css/styles.min.css">
     </head>
-    <body>
-        <div class="chat">
-            <div id="sidebar" class="chat__sidebar">
-
+        <body class="chat">
+            <div class="chat__sidebar">
+              <div id="sidebar"></div>
             </div>
+          
             <div class="chat__main">
-                <div id='messages' class="chat__messages"></div>
-
-                <div class="compose">
-                    <form id="message-form">
-                        <input name="message" placeholder="Message" required autocomplete="off">
-                        <button>Send</button>
-                    </form>
-                    <button id="send-location">Send Location</button>
-                </div>
+              <ol id="messages" class="chat__messages"></ol>
+              <div id="feedback"></div>
+          
+              <div class="chat__footer">
+                <form id="message-form">
+                  <input id="input__message" type="text" id="msg" name="message" autocomplete="off" placeholder="Enter Message" value=""  required autofocus/>
+                  <button>Send</button>
+                </form>
+                <button id="send-location">Send Location</button>
+              </div>
             </div>
-        </div>
+        </body>
         
         
-        <script id="message-template" type="text/html">
-            <div class="message">
-                <p>
-                    <span class="message__name">{{username}}</span>
-                    <span class="message__meta">{{createdAt}}</span>
-                </p>
+        <script id="message-template" type="text/template">
+            <li class="message talk-bubble tri-right round left-top">
+              <div class="message__title">
+                <h4>{{username}}</h4>
+                <span>{{createdAt}}</span>
+              </div>
+              <div class="message__body">
                 <p>{{message}}</p>
-            </div>
-        </script>
+              </div>
+            </li>
+          </script>
 
-        <script id="location-template" type="text/html">
-           <div class="message">
-            <p>
-                <span class="message__name">{{username}}</span>
-                <span class="message__meta">{{createdAt}}</span>
-            </p>
-            <p><a href="{{url}}" target="_blank">My current location</a></p>
-        </div>
-        </script>
+          <script id="location-template" type="text/template">
+            <li class="message talk-bubble tri-right round left-top">
+              <div class="message__title">
+                <h4>{{username}}</h4>
+                <span>{{createdAt}}</span>
+              </div>
+              <div class="message__body">
+                <p>
+                  <a href="{{url}}" target="_blank">My current location</a>
+                </p>
+              </div>
+            </li>
+          </script>
+        
+        
 
         <script id="sidebar-template" type="text/html">
-            <h2 class="room-title">{{room}}</h2>
+            <h3 class="list-title">Room</h3>
+            <ul class="users">
+                <li>{{room}}</li>
+            </ul>
             <h3 class="list-title">Users</h3>
             <ul class="users">
                 {{#users}}
                     <li>{{username}}</li>
                 {{/users}}
             </ul>   
-        
-        
         </script>
+
+        <script id="self-message-template" type="text/template">
+            <li class="self__message talk-bubble tri-right round right-top">
+              <div class="self__message__title">
+                <span>{{createdAt}}</span>
+                <h4>{{username}}</h4>
+              </div>
+              <div class="self__message__body">
+                <p>{{message}}</p>
+              </div>
+            </li>
+          </script>
+
+          <script id="self-location-template" type="text/template">
+            <li class="self__message talk-bubble tri-right round right-top">
+              <div class="self__message__title">
+                <span>{{createdAt}}</span>
+                <h4>{{username}}</h4>
+              </div>
+              <div class="self__message__body">
+                <p>
+                  <a href="{{url}}" target="_blank">Check out my location</a>
+                </p>
+              </div>
+            </li>
+          </script>
+        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>

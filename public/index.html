@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chat App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ChatApp</title>
         <link rel="icon" href="./img/favicon.png">
         <link rel="stylesheet" href="./css/styles.min.css">
     </head>
-    <body>
-        <div class="centered-form">
-            <div class="centered-form__box">
-                <h1>Join</h1>
-                <form action="/chat.html">
-                    <label>Display name</label>
-                    <input type="text" name="username" placeholder="Display name" required>
-                    <label>Room</label>
-                    <input type="text" name="room" placeholder="Room" required>
-                    <button>Join</button>
-                </form>
+    <body class="centered-form">
+        <div class="centered-form__form">
+          <form action="/chat.html">
+            <div class="form-field">
+              <h3>Join a Chat</h3>
             </div>
-
+            <div class="form-field">
+              <label>Display Name</label>
+              <input type="text" placeholder="Your name" name="username" autofocus autocomplete="off" required>
+            </div>
+            <div class="form-field">
+              <label>Room Name</label>
+              <input type="text" placeholder="Room name" name="room" autocomplete="off" required>
+            </div>
+            <div class="form-field">
+              <button>Join Now</button>
+            </div>
+          </form>
         </div>
-    </body>
+      
+        <div class="copyright">
+          <h3>Made By Bharathi S</h3>
+          <p>Reach Out at: <a class="mail-feedback" href="mailto:sivabharathi1295@gmail.com">sivabharathi1295@gmail.com</a></p>
+        </div>
+      
+      </body>
 </html>
